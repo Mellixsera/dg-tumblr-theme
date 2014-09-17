@@ -1515,8 +1515,9 @@
             </footer>
         </section>
 
-        {block:IfUseEndlessScrolling}
         <script type="text/javascript" src="http://assets.tumblr.com/assets/scripts/jquery-1.7.2.min.js"></script>
+        {block:IfUseEndlessScrolling}
+        
         <script type="text/javascript">
             var Tumblelog = {};
 
@@ -1709,5 +1710,23 @@
                         s.parentNode.insertBefore(g,s)}(document,'script'));
             </script>
         {/block:IfGoogleAnalyticsID}
+        <script>
+            $(document).ready(function(){
+                var post_id="{PostID}";
+                if(post_id) return;
+                var indexpage="{block:IndexPage}1{/block:IndexPage}";
+                if(indexpage) return;
+                if($(".caption.group h2").text() == "Nicht gefunden") {
+                    //404
+                    $(".caption.group h2").text("");
+                    $(".caption.group div").first().prepend(
+                            "<p><img src='http://static.tumblr.com/utapqgk/6Tfnc25r1/54423303.jpg'></p>"
+                            +"<p>Vielleicht wirst du ja auf der <a href='http://diegehorsame.tumblr.com'>Startseite</a> f&uuml;ndig?</p>"
+                    );
+                    //
+                    
+                }
+            });
+        </script>
     </body>
 </html>
